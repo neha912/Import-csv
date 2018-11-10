@@ -1,0 +1,33 @@
+<h1>Hello..!! </h1>
+<%= flash[:notice] %>
+<table>
+  <thead>
+  <tr>
+    <th> ID </th>
+    <th> Steps </th>
+    <th> Distance </th>
+    <th> Exercised </th>
+    <th> sleep </th>
+    <th> created_at</th>
+    <th> updated_at</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%=user.id%></td>
+      <td><%=user.steps%></td>
+      <td><%=user.distance%></td>
+      <td><%=user.exercise%></td>
+      <td><%=user.sleep%></td>
+      <td><%=user.calories%></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<div>
+<h4>Import that data!!!</h4>
+  <%= form_tag import_users_path ,:multipart => true do %>
+    <%=file_field_tag :file%>
+    <%=submit_tag "ImportCSV" %>
+  <% end %>
